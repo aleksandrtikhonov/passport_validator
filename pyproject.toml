@@ -6,6 +6,8 @@ authors = ["atikhonov <aleksandrtikhonov91@gmail.com>"]
 license = "MIT"
 readme = "README.md"
 
+packages = [{include = "src"}]
+
 [tool.poetry.dependencies]
 python = "^3.11.0"
 fastapi = "^0.92.0"
@@ -15,3 +17,7 @@ uvicorn = {extras = ["standart"], version = "^0.20.0"}
 [build-system]
 requires = ["poetry-core"]
 build-backend = "poetry.core.masonry.api"
+
+
+[tool.poetry.scripts]
+run_server = "src.main:run_server"
