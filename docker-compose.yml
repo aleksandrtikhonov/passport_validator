@@ -1,0 +1,13 @@
+version: "3.9"
+services:
+  redis:
+    image: "redis:7.0.9"
+    container_name: passport-valiadtor-redis
+    ports:
+     - "6379:6379"
+  redisinsight:
+    image: "redislabs/redisinsight:latest"
+    ports:
+      - '8001:8001'
+#    volumes:
+#      - ./data/redisinsight:/db

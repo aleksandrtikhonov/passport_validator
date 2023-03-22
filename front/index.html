@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+
+
+<form id="passportDataForm">
+    <p><label>
+        <input type="text" name="seria" id="seria" value="1234">
+    </label></p>
+    <p><label>
+        <input type="text" name="number" id="number" value="123456">
+    </label></p>
+    <p><input type="button" value="Отправить" onclick="checkPassportData()"></p>
+</form>
+
+<script type="text/javascript">
+    async function checkPassportData() {
+        let seria = document.getElementById('seria')
+        let number = document.getElementById('number')
+        let params = {
+            seria: seria.value,
+            number: number.value
+        };
+        let url = new URL('http://localhost:8000/suka/')
+        Object.keys(params).forEach(key => url.searchParams.append(key, params[key]))
+
+        let response = await fetch(url);
+        console.log(response)
+
+        document.getElementById("hz").innerHTML = await response.text();
+    }
+</script>
+
+        <p id="hz">Тут будет результат</p>
+</body>
+</html>
